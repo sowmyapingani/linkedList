@@ -2,25 +2,41 @@ package com.bridge.labzs;
 
 import org.w3c.dom.Node;
 
-public class linkedList <E> {
-    node.Node.Node<E> head;
-    Node<E> tail;
+public class linkedList <E>{
+
+   Node<T> head;
+    Node<T> tail;
     public void add(E data) {
-        Node<E> newNode = new node.Node.Node<E>(data);
+        Node<T> newNode = new Node<T>(data);
         if (head == null) {
-            head = (node.Node.Node<E>) newNode;
+            head = newNode;
             tail = newNode;
         } else {
             newNode.next = head;
             head = newNode;
         }
     }
+    public void append(E data) {
+        Node<T> newNode = new Node<T>(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+    public void insertBetween(E data) {
+        Node<T> newNode = new Node<T>(data);
+        head.next = newNode;
+        newNode.next = tail;
+    }
+
     public void display() {
-        Node<E> temp = head;
+        Node<T> temp = head;
         while (temp != null) {
             System.out.print(temp.data + "->");
             temp = temp.next;
-            //System.out.println(temp.data);
         }
     }
 }
